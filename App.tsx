@@ -116,7 +116,7 @@ function App() {
                   />
                   <Stack.Screen
                     name="IndexScreen"
-                    component={withSafeArea(IndexScreen)}
+                    component={IndexScreen}
                     options={{ title: "IndexScreen" }}
                   />
                   <Stack.Screen
