@@ -5,7 +5,6 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, useColorScheme, View, Text } from 'react-native';
 import {
   SafeAreaProvider,
@@ -14,13 +13,12 @@ import {
 } from 'react-native-safe-area-context';
 import { RequestProvider } from './web/providers/RequestProvider';
 import EmptyScreen from './web/screens/EmptyScreen';
-import GameScreen from './web/screens/GameScreen';
 import IndexScreen from './web/screens/IndexScreen';
 import GuestScreen from './web/screens/GuestScreen';
 import TestScreen from './web/screens/TestScreen';
 import LobbyScreen from './web/screens/LobbyScreen';
 import PageLayoutScreen from './web/screens/PageLayoutScreen';
-import { NavigationContainer } from '@react-navigation/native';
+import Game from './web/app/game/[gameId]';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationProvider, navigationRef } from './web/providers/NavigationProvider';
 import { AuthProvider } from './web/providers/AuthProvider';
@@ -92,47 +90,44 @@ function App() {
         <RequestProvider>
           <UIProvider>
             <NavigationProvider>
-              <NavigationContainer ref={navigationRef}>
-                <Stack.Navigator initialRouteName="IndexScreen" >
-                  <Stack.Screen
-                    name="EmptyScreen"
-                    component={withSafeArea(EmptyScreen)}
-                    options={{ title: "EmptyScreen" }}
-                  />
-                  <Stack.Screen
-                    name="LobbyScreen"
-                    component={withSafeArea(LobbyScreen)}
-                    options={{ title: "LobbyScreen" }}
-                  />
-                  <Stack.Screen
-                    name="GuestScreen"
-                    component={withSafeArea(GuestScreen)}
-                    options={{ title: "GuestScreen" }}
-                  />
-                  <Stack.Screen
-                    name="TestScreen"
-                    component={withSafeArea(TestScreen)}
-                    options={{ title: "TestScreen" }}
-                  />
-                  <Stack.Screen
-                    name="IndexScreen"
-                    component={IndexScreen}
-                    options={{ title: "IndexScreen" }}
-                  />
-                  <Stack.Screen
-                    name="GameScreen"
-                    component={withSafeArea(GameScreen)}
-                    options={{ title: "GameScreen" }}
-                  />
-                                    
-                  <Stack.Screen
-                    name="PageLayoutScreen"
-                    component={withSafeArea(PageLayoutScreen)}
-                    options={{ title: "PageLayoutScreen" }}
-                  />
-                  
-                </Stack.Navigator>
-              </NavigationContainer>
+
+              <Stack.Navigator initialRouteName="IndexScreen" >
+                <Stack.Screen
+                  name="EmptyScreen"
+                  component={withSafeArea(EmptyScreen)}
+                  options={{ title: "EmptyScreen" }}
+                />
+                <Stack.Screen
+                  name="LobbyScreen"
+                  component={withSafeArea(LobbyScreen)}
+                  options={{ title: "LobbyScreen" }}
+                />
+                <Stack.Screen
+                  name="GuestScreen"
+                  component={withSafeArea(GuestScreen)}
+                  options={{ title: "GuestScreen" }}
+                />
+                <Stack.Screen
+                  name="TestScreen"
+                  component={withSafeArea(TestScreen)}
+                  options={{ title: "TestScreen" }}
+                />
+                <Stack.Screen
+                  name="IndexScreen"
+                  component={IndexScreen}
+                  options={{ title: "IndexScreen" }}
+                />
+                <Stack.Screen
+                  name="GameScreen"
+                  component={Game}
+                  options={{ title: "GameScreen" }}
+                />
+                <Stack.Screen
+                  name="PageLayoutScreen"
+                  component={withSafeArea(PageLayoutScreen)}
+                  options={{ title: "PageLayoutScreen" }}
+                />
+              </Stack.Navigator>
             </NavigationProvider>
           </UIProvider>
         </RequestProvider>
