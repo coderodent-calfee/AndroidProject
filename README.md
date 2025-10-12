@@ -6,3 +6,4 @@ npx react-native run-android --no-packager
 if B fails, ctrl c A, and re-run B
 then restart  terminal A
 
+10/12/25
