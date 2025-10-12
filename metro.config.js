@@ -1,3 +1,5 @@
+const path = require('path');
+
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 
 /**
@@ -11,7 +13,8 @@ module.exports = (async () => {
 
   const { assetExts, sourceExts } = defaultConfig.resolver;
 
-  return mergeConfig(defaultConfig, {
+  const returnedConfig = 
+   mergeConfig(defaultConfig, {
     transformer: {
       babelTransformerPath: require.resolve('react-native-svg-transformer'),
     },
@@ -19,5 +22,12 @@ module.exports = (async () => {
       assetExts: assetExts.filter(ext => ext !== 'svg'),
       sourceExts: [...sourceExts, 'svg'],
     },
+    watchFolders: [
+      path.resolve(__dirname, 'web'),  // Metro will watch your submodule
+    ],
+
   });
+  console.error("===============================================");
+  console.error(returnedConfig);
+  return returnedConfig;
 })();
